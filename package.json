@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://omkarraskar9192.github.io/cyber-tech/",
+
 
   "scripts": {
     "dev": "vite",

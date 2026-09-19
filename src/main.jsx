@@ -10,7 +10,7 @@ import { Content, Team, About, Home } from './components/index.js';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
+    <Route path="/cyber-tech" element={<Layout />}>
       <Route path="" element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="content" element={<Content />} />
