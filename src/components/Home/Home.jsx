@@ -112,13 +112,17 @@ export default function Home() {
             </div>
 
             {/* 3D Scene Toggle (Solar System vs Cyber Core) */}
-            <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-slate-950/80 border border-white/15 backdrop-blur-xl shadow-xl">
+            <div className={`flex items-center gap-1.5 p-1 rounded-2xl border backdrop-blur-xl shadow-xl transition-colors ${
+              isDarkMode
+                ? 'bg-slate-950/80 border-white/15'
+                : 'bg-white/90 border-slate-200 shadow-md'
+            }`}>
               <button
                 onClick={() => dispatch(setActive3DScene('solar'))}
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
                   active3DScene === 'solar'
                     ? 'bg-gradient-to-r from-amber-400 via-orange-500 to-amber-500 text-slate-950 shadow-md'
-                    : 'text-slate-400 hover:text-white'
+                    : isDarkMode ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-slate-950'
                 }`}
               >
                 <Globe2 className="w-3.5 h-3.5" />
@@ -130,7 +134,7 @@ export default function Home() {
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
                   active3DScene === 'cyber'
                     ? 'bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 text-slate-950 shadow-md'
-                    : 'text-slate-400 hover:text-white'
+                    : isDarkMode ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-slate-950'
                 }`}
               >
                 <Orbit className="w-3.5 h-3.5" />
@@ -383,7 +387,7 @@ export default function Home() {
             <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider bg-cyan-950/60 border border-cyan-500/20 px-3 py-1 rounded-full">
               Developer Playground
             </span>
-            <p className="text-sm text-slate-400 mt-2">
+            <p className={`text-sm mt-2 transition-colors duration-500 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
               Interact with the live club CLI below or run commands to test integrations.
             </p>
           </div>
@@ -392,7 +396,6 @@ export default function Home() {
       </section>
 
       {/* ================= METRICS STATS RIBBON ================= */}
-      <div className="border-y border-white/10 bg-slate-950/70 backdrop-blur-md py-8">
       <div className={`border-y py-8 backdrop-blur-md transition-colors duration-500 ${
         isDarkMode
           ? 'border-white/10 bg-slate-950/70'
@@ -401,26 +404,18 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="space-y-1">
-              <p className="text-3xl sm:text-4xl font-black font-mono text-white">320+</p>
-              <p className="text-xs sm:text-sm text-slate-400 font-mono">Student Engineers</p>
               <p className={`text-3xl sm:text-4xl font-black font-mono transition-colors ${isDarkMode ? 'text-white' : 'text-slate-950'}`}>320+</p>
               <p className={`text-xs sm:text-sm font-mono ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Student Engineers</p>
             </div>
             <div className="space-y-1">
-              <p className="text-3xl sm:text-4xl font-black font-mono text-cyan-400">1,842</p>
-              <p className="text-xs sm:text-sm text-slate-400 font-mono">Monthly Git Commits</p>
               <p className="text-3xl sm:text-4xl font-black font-mono text-cyan-500">1,842</p>
               <p className={`text-xs sm:text-sm font-mono ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Monthly Git Commits</p>
             </div>
             <div className="space-y-1">
-              <p className="text-3xl sm:text-4xl font-black font-mono text-purple-400">38</p>
-              <p className="text-xs sm:text-sm text-slate-400 font-mono">Production Repos</p>
               <p className="text-3xl sm:text-4xl font-black font-mono text-purple-500">38</p>
               <p className={`text-xs sm:text-sm font-mono ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Production Repos</p>
             </div>
             <div className="space-y-1">
-              <p className="text-3xl sm:text-4xl font-black font-mono text-emerald-400">$85K+</p>
-              <p className="text-xs sm:text-sm text-slate-400 font-mono">Hackathon Winnings</p>
               <p className="text-3xl sm:text-4xl font-black font-mono text-emerald-500">$85K+</p>
               <p className={`text-xs sm:text-sm font-mono ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Hackathon Winnings</p>
             </div>
@@ -433,8 +428,6 @@ export default function Home() {
 
       {/* ================= CALL TO ACTION FOOTER BANNER ================= */}
       <section className="py-20 relative z-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
-        <div className="p-8 sm:p-14 rounded-3xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-white/15 backdrop-blur-2xl shadow-2xl relative overflow-hidden">
-          <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl" />
         <div className={`p-8 sm:p-14 rounded-3xl border backdrop-blur-2xl shadow-2xl relative overflow-hidden transition-all duration-500 ${
           isDarkMode
             ? 'bg-gradient-to-b from-slate-900/90 via-slate-950/95 to-[#020617] border-white/15 shadow-cyan-950/30'
@@ -444,13 +437,11 @@ export default function Home() {
             isDarkMode ? 'bg-cyan-500/20' : 'bg-amber-400/20'
           }`} />
 
-          <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight relative z-10">
           <h3 className={`text-2xl sm:text-4xl font-extrabold tracking-tight relative z-10 transition-colors duration-500 ${
             isDarkMode ? 'text-white' : 'text-slate-950'
           }`}>
             Ready to Build Something Extraordinary?
           </h3>
-          <p className="text-slate-300 max-w-xl mx-auto mt-4 text-sm sm:text-base relative z-10">
           <p className={`max-w-xl mx-auto mt-4 text-sm sm:text-base relative z-10 leading-relaxed transition-colors duration-500 ${
             isDarkMode ? 'text-slate-300' : 'text-slate-600'
           }`}>

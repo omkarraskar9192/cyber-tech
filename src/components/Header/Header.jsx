@@ -19,28 +19,42 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+    <header className={`sticky top-0 z-40 w-full border-b backdrop-blur-xl transition-all duration-500 ${
+      isDarkMode
+        ? 'border-white/10 bg-slate-950/85 text-white'
+        : 'border-slate-200/90 bg-white/90 shadow-sm text-slate-950'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-18 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-purple-500 to-pink-500 p-[1.5px] shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
-              <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+              <div className={`w-full h-full rounded-[10px] flex items-center justify-center ${
+                isDarkMode ? 'bg-slate-950' : 'bg-slate-900'
+              }`}>
                 <Code2 className="w-5 h-5 text-cyan-400 group-hover:rotate-12 transition-transform" />
               </div>
             </div>
             <div>
-              <span className="font-extrabold text-base tracking-tight text-white flex items-center gap-1.5">
+              <span className={`font-extrabold text-base tracking-tight flex items-center gap-1.5 ${
+                isDarkMode ? 'text-white' : 'text-slate-950'
+              }`}>
                 NEXUS <span className="text-cyan-400 font-mono text-xs font-semibold px-1.5 py-0.5 rounded bg-cyan-950 border border-cyan-500/30">DEV</span>
               </span>
-              <p className="text-[10px] font-mono text-slate-400 hidden sm:block">
+              <p className={`text-[10px] font-mono hidden sm:block ${
+                isDarkMode ? 'text-slate-400' : 'text-slate-500'
+              }`}>
                 Collegiate Engineering Collective
               </p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-md">
+          <nav className={`hidden md:flex items-center gap-1 border rounded-full px-3 py-1.5 backdrop-blur-md transition-colors ${
+            isDarkMode
+              ? 'bg-white/5 border-white/10'
+              : 'bg-slate-100/90 border-slate-200 shadow-xs'
+          }`}>
             {navItems.map((item) => (
               <NavLink
                 key={item.name}
@@ -49,7 +63,9 @@ export default function Header() {
                   `px-4 py-1.5 text-xs font-medium rounded-full transition-all ${
                     isActive
                       ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold shadow-md shadow-cyan-500/20'
-                      : 'text-slate-300 hover:text-white hover:bg-white/5'
+                      : isDarkMode
+                      ? 'text-slate-300 hover:text-white hover:bg-white/5'
+                      : 'text-slate-600 hover:text-slate-950 hover:bg-slate-200/80'
                   }`
                 }
               >
@@ -87,7 +103,11 @@ export default function Header() {
               href="https://github.com"
               target="_blank"
               rel="noreferrer"
-              className="p-2 rounded-full text-slate-400 hover:text-current hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+              className={`p-2 rounded-full transition-colors ${
+                isDarkMode
+                  ? 'text-slate-400 hover:text-white hover:bg-white/10'
+                  : 'text-slate-600 hover:text-slate-950 hover:bg-slate-100'
+              }`}
               title="GitHub Organization"
             >
               <GithubIcon className="w-4 h-4" />
@@ -106,14 +126,16 @@ export default function Header() {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={() => dispatch(toggleDarkMode())}
-              className="p-2 rounded-full border border-current/20 text-current text-xs"
+              className={`p-2 rounded-full border text-xs cursor-pointer ${
+                isDarkMode ? 'border-white/20 text-white' : 'border-slate-300 text-slate-900'
+              }`}
               title="Toggle Day/Night"
             >
               {isDarkMode ? <Moon className="w-4 h-4 text-cyan-400" /> : <Sun className="w-4 h-4 text-amber-500" />}
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-400 hover:text-current"
+              className={`p-2 cursor-pointer ${isDarkMode ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-slate-950'}`}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -123,7 +145,11 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-white/10 bg-slate-950/95 backdrop-blur-2xl px-4 pt-2 pb-6 space-y-3">
+        <div className={`md:hidden border-b backdrop-blur-2xl px-4 pt-2 pb-6 space-y-3 transition-colors ${
+          isDarkMode
+            ? 'border-white/10 bg-slate-950/95 text-white'
+            : 'border-slate-200 bg-white/95 text-slate-900 shadow-xl'
+        }`}>
           <div className="flex flex-col space-y-1">
             {navItems.map((item) => (
               <NavLink
@@ -134,7 +160,9 @@ export default function Header() {
                   `px-3 py-2 text-sm font-medium rounded-xl ${
                     isActive
                       ? 'bg-cyan-500/20 text-cyan-400 font-bold'
-                      : 'text-slate-300 hover:bg-white/5'
+                      : isDarkMode
+                      ? 'text-slate-300 hover:bg-white/5'
+                      : 'text-slate-700 hover:bg-slate-100'
                   }`
                 }
               >
@@ -143,13 +171,13 @@ export default function Header() {
             ))}
           </div>
 
-          <div className="pt-3 border-t border-white/10">
+          <div className={`pt-3 border-t ${isDarkMode ? 'border-white/10' : 'border-slate-200'}`}>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 dispatch(setJoinModalOpen(true));
               }}
-              className="w-full py-2.5 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-cyan-400 to-blue-500 text-center shadow-lg"
+              className="w-full py-2.5 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-cyan-400 to-blue-500 text-center shadow-lg cursor-pointer"
             >
               Join Club Application
             </button>

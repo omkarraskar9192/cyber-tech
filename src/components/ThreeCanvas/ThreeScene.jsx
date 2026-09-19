@@ -8,6 +8,7 @@ export default function ThreeScene() {
   const containerRef = useRef(null);
   const dispatch = useDispatch();
   const activeGeometry = useSelector((state) => state.ui.active3DGeometry);
+  const isDarkMode = useSelector((state) => state.ui.isDarkMode);
   const [isInteracting, setIsInteracting] = useState(false);
 
   // Keep references across renders
@@ -348,8 +349,14 @@ export default function ThreeScene() {
       />
 
       {/* Floating 3D Control Pill */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-950/85 backdrop-blur-xl border border-white/20 shadow-2xl text-xs shadow-cyan-500/10">
-        <span className="text-slate-300 flex items-center gap-1.5 pl-1 pr-2.5 border-r border-white/15 font-mono font-semibold">
+      <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full backdrop-blur-xl border shadow-2xl text-xs transition-colors ${
+        isDarkMode
+          ? 'bg-slate-950/85 border-white/20 text-white shadow-cyan-500/10'
+          : 'bg-white/95 border-slate-200 text-slate-900 shadow-lg shadow-slate-300/40'
+      }`}>
+        <span className={`flex items-center gap-1.5 pl-1 pr-2.5 border-r font-mono font-semibold ${
+          isDarkMode ? 'text-slate-300 border-white/15' : 'text-slate-600 border-slate-200'
+        }`}>
           <Orbit className="w-3.5 h-3.5 text-cyan-400 animate-spin" style={{ animationDuration: '5s' }} />
           3D Core
         </span>
@@ -359,7 +366,7 @@ export default function ThreeScene() {
           className={`px-3 py-1 rounded-full transition-all font-mono font-bold text-xs cursor-pointer ${
             activeGeometry === 'polyhedron'
               ? 'bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 text-slate-950 shadow-md shadow-cyan-500/30'
-              : 'text-slate-400 hover:text-white'
+              : isDarkMode ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-slate-950'
           }`}
         >
           Crystal
@@ -370,7 +377,7 @@ export default function ThreeScene() {
           className={`px-3 py-1 rounded-full transition-all font-mono font-bold text-xs cursor-pointer ${
             activeGeometry === 'torus'
               ? 'bg-gradient-to-r from-fuchsia-500 via-pink-500 to-rose-500 text-white shadow-md shadow-pink-500/30'
-              : 'text-slate-400 hover:text-white'
+              : isDarkMode ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-slate-950'
           }`}
         >
           Torus
@@ -381,7 +388,7 @@ export default function ThreeScene() {
           className={`px-3 py-1 rounded-full transition-all font-mono font-bold text-xs cursor-pointer ${
             activeGeometry === 'octahedron'
               ? 'bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 text-slate-950 shadow-md shadow-amber-500/30'
-              : 'text-slate-400 hover:text-white'
+              : isDarkMode ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-slate-950'
           }`}
         >
           Prism
@@ -389,8 +396,12 @@ export default function ThreeScene() {
       </div>
 
       {/* Interactive Drag Hint */}
-      <div className="absolute top-4 right-4 z-20 pointer-events-none hidden sm:flex items-center gap-1.5 text-[11px] font-mono text-cyan-300 bg-slate-950/80 border border-cyan-500/30 px-3 py-1 rounded-full backdrop-blur-md shadow-lg shadow-cyan-500/15">
-        <Sparkles className="w-3 h-3 text-cyan-400 animate-pulse" />
+      <div className={`absolute top-4 right-4 z-20 pointer-events-none hidden sm:flex items-center gap-1.5 text-[11px] font-mono px-3 py-1 rounded-full backdrop-blur-md shadow-lg border ${
+        isDarkMode
+          ? 'text-cyan-300 bg-slate-950/80 border-cyan-500/30 shadow-cyan-500/15'
+          : 'text-cyan-800 bg-white/90 border-cyan-200 shadow-slate-200'
+      }`}>
+        <Sparkles className="w-3 h-3 text-cyan-500 animate-pulse" />
         <span>Drag to rotate in 360°</span>
       </div>
     </div>

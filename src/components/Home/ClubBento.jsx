@@ -50,7 +50,6 @@ export default function ClubBento() {
 
   // Generate simulated GitHub contribution cells
   const commitGrid = Array.from({ length: 42 }).map((_, i) => {
-    const levels = [
     const levels = isDarkMode ? [
       'bg-slate-800',
       'bg-emerald-950 border border-emerald-800/40',
@@ -78,14 +77,12 @@ export default function ClubBento() {
             <Flame className="w-3.5 h-3.5 text-orange-400" />
             ENGINEERING ECOSYSTEM
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
           <h2 className={`text-3xl sm:text-5xl font-extrabold tracking-tight transition-colors duration-500 ${isDarkMode ? 'text-white' : 'text-slate-950'}`}>
             Built by Developers, <br />
             <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               Driven by Real Code.
             </span>
           </h2>
-          <p className="mt-4 text-slate-400 text-base sm:text-lg">
           <p className={`mt-4 text-base sm:text-lg transition-colors duration-500 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
             Explore our open-source creations, upcoming hackathon challenges, and collaborative work.
           </p>
@@ -95,7 +92,6 @@ export default function ClubBento() {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
           {/* Card 1: Live GitHub Activity (Wide 2-col) */}
-          <div className="md:col-span-2 lg:col-span-2 rounded-3xl p-6 bg-slate-900/60 border border-white/10 backdrop-blur-xl shadow-xl hover:border-cyan-500/40 transition-all duration-300 flex flex-col justify-between group">
           <div className={`md:col-span-2 lg:col-span-2 rounded-3xl p-6 border backdrop-blur-xl shadow-xl transition-all duration-300 flex flex-col justify-between group ${
             isDarkMode
               ? 'bg-slate-900/60 border-white/10 hover:border-cyan-500/40'
@@ -108,7 +104,6 @@ export default function ClubBento() {
                     <GitCommit className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold text-base">Club GitHub Velocity</h3>
                     <h3 className={`font-semibold text-base transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Club GitHub Velocity</h3>
                     <p className="text-xs text-slate-400 font-mono">live git commit stream</p>
                   </div>
@@ -121,8 +116,6 @@ export default function ClubBento() {
               </div>
 
               {/* Commit Heatmap Grid */}
-              <div className="mt-4 p-4 rounded-2xl bg-slate-950/70 border border-white/5">
-                <div className="text-[11px] font-mono text-slate-400 mb-2 flex justify-between">
               <div className={`mt-4 p-4 rounded-2xl border transition-colors ${
                 isDarkMode
                   ? 'bg-slate-950/70 border-white/5'
@@ -144,7 +137,6 @@ export default function ClubBento() {
               </div>
             </div>
 
-            <div className="mt-6 flex items-center justify-between text-xs text-slate-400 font-mono pt-4 border-t border-white/5">
             <div className={`mt-6 flex items-center justify-between text-xs font-mono pt-4 border-t ${
               isDarkMode ? 'text-slate-400 border-white/5' : 'text-slate-500 border-slate-200'
             }`}>
@@ -153,7 +145,6 @@ export default function ClubBento() {
                 href="https://github.com"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1 text-slate-300 hover:text-cyan-400 transition-colors"
                 className={`flex items-center gap-1 transition-colors ${
                   isDarkMode ? 'text-slate-300 hover:text-cyan-400' : 'text-slate-600 hover:text-cyan-600'
                 }`}
@@ -164,7 +155,6 @@ export default function ClubBento() {
           </div>
 
           {/* Card 2: Upcoming Hackathon Countdown */}
-          <div className="md:col-span-1 lg:col-span-2 rounded-3xl p-6 bg-gradient-to-br from-purple-950/40 via-slate-900/60 to-slate-900/60 border border-purple-500/20 backdrop-blur-xl shadow-xl hover:border-purple-500/50 transition-all duration-300 flex flex-col justify-between">
           <div className={`md:col-span-1 lg:col-span-2 rounded-3xl p-6 border backdrop-blur-xl shadow-xl transition-all duration-300 flex flex-col justify-between ${
             isDarkMode
               ? 'bg-gradient-to-br from-purple-950/40 via-slate-900/60 to-slate-900/60 border-purple-500/20 hover:border-purple-500/50'
@@ -177,8 +167,6 @@ export default function ClubBento() {
                     <Timer className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold text-base">Next Flagship Event</h3>
-                    <p className="text-xs text-purple-300/80 font-mono">HackMatrix 2026</p>
                     <h3 className={`font-semibold text-base transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Next Flagship Event</h3>
                     <p className={`text-xs font-mono ${isDarkMode ? 'text-purple-300/80' : 'text-purple-700'}`}>HackMatrix 2026</p>
                   </div>
@@ -199,20 +187,17 @@ export default function ClubBento() {
                 ].map((slot) => (
                   <div
                     key={slot.label}
-                    className="flex flex-col items-center justify-center p-3 rounded-2xl bg-slate-950/80 border border-white/5"
                     className={`flex flex-col items-center justify-center p-3 rounded-2xl border transition-colors ${
                       isDarkMode
                         ? 'bg-slate-950/80 border-white/5'
                         : 'bg-white border-purple-100 shadow-sm'
                     }`}
                   >
-                    <span className="text-xl sm:text-2xl font-black font-mono text-white">
                     <span className={`text-xl sm:text-2xl font-black font-mono transition-colors ${
                       isDarkMode ? 'text-white' : 'text-slate-900'
                     }`}>
                       {String(slot.val).padStart(2, '0')}
                     </span>
-                    <span className="text-[9px] font-mono text-slate-400 tracking-wider mt-1">
                     <span className={`text-[9px] font-mono tracking-wider mt-1 ${
                       isDarkMode ? 'text-slate-400' : 'text-slate-500'
                     }`}>
@@ -224,8 +209,6 @@ export default function ClubBento() {
             </div>
 
             <div className="mt-4 flex items-center justify-between">
-              <span className="text-xs font-mono text-slate-400">
-                ⚡ Only <span className="text-white font-bold">{upcomingHackathon.slotsLeft}</span> team slots left
               <span className={`text-xs font-mono ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                 ⚡ Only <span className={`font-bold ${isDarkMode ? 'text-white' : 'text-slate-950'}`}>{upcomingHackathon.slotsLeft}</span> team slots left
               </span>
@@ -239,8 +222,6 @@ export default function ClubBento() {
           </div>
 
           {/* Card 3: Interactive Filterable Flagship Projects (Full Width) */}
-          <div className="md:col-span-3 lg:col-span-4 rounded-3xl p-6 sm:p-8 bg-slate-900/60 border border-white/10 backdrop-blur-xl shadow-xl">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-white/10">
           <div className={`md:col-span-3 lg:col-span-4 rounded-3xl p-6 sm:p-8 border backdrop-blur-xl shadow-xl transition-all duration-300 ${
             isDarkMode
               ? 'bg-slate-900/60 border-white/10'
@@ -250,14 +231,12 @@ export default function ClubBento() {
               isDarkMode ? 'border-white/10' : 'border-slate-200'
             }`}>
               <div>
-                <h3 className="text-xl font-bold text-white flex items-center gap-2">
                 <h3 className={`text-xl font-bold flex items-center gap-2 transition-colors ${
                   isDarkMode ? 'text-white' : 'text-slate-950'
                 }`}>
                   <Code2 className="w-5 h-5 text-cyan-400" />
                   Flagship Student Repositories
                 </h3>
-                <p className="text-sm text-slate-400 mt-0.5">
                 <p className={`text-sm mt-0.5 transition-colors ${
                   isDarkMode ? 'text-slate-400' : 'text-slate-600'
                 }`}>
@@ -274,7 +253,6 @@ export default function ClubBento() {
                     className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                       selectedCategory === cat.key
                         ? 'bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/25'
-                        : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white border border-white/5'
                         : isDarkMode
                           ? 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white border border-white/5'
                           : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900 border border-slate-200'
@@ -291,7 +269,6 @@ export default function ClubBento() {
               {filteredProjects.map((p) => (
                 <div
                   key={p.id}
-                  className="rounded-2xl p-5 bg-slate-950/70 border border-white/5 hover:border-cyan-500/30 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
                   className={`rounded-2xl p-5 border transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 ${
                     isDarkMode
                       ? 'bg-slate-950/70 border-white/5 hover:border-cyan-500/30'
@@ -300,7 +277,6 @@ export default function ClubBento() {
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-md bg-white/5 text-slate-400 border border-white/5">
                       <span className={`text-[10px] uppercase font-mono px-2 py-0.5 rounded-md border ${
                         isDarkMode ? 'bg-white/5 text-slate-400 border-white/5' : 'bg-white text-slate-600 border-slate-200 shadow-xs'
                       }`}>
@@ -316,13 +292,11 @@ export default function ClubBento() {
                       </button>
                     </div>
 
-                    <h4 className="text-base font-semibold text-white group-hover:text-cyan-400 transition-colors">
                     <h4 className={`text-base font-semibold transition-colors ${
                       isDarkMode ? 'text-white group-hover:text-cyan-400' : 'text-slate-900 group-hover:text-cyan-600'
                     }`}>
                       {p.title}
                     </h4>
-                    <p className="text-xs text-slate-400 mt-2 line-clamp-3 leading-relaxed">
                     <p className={`text-xs mt-2 line-clamp-3 leading-relaxed transition-colors ${
                       isDarkMode ? 'text-slate-400' : 'text-slate-600'
                     }`}>
@@ -330,14 +304,12 @@ export default function ClubBento() {
                     </p>
                   </div>
 
-                  <div className="mt-5 pt-4 border-t border-white/5">
                   <div className={`mt-5 pt-4 border-t ${isDarkMode ? 'border-white/5' : 'border-slate-200'}`}>
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1 mb-3">
                       {p.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-950/40 text-cyan-300 border border-cyan-500/20"
                           className={`text-[10px] font-mono px-1.5 py-0.5 rounded border ${
                             isDarkMode
                               ? 'bg-cyan-950/40 text-cyan-300 border-cyan-500/20'
@@ -357,7 +329,6 @@ export default function ClubBento() {
                           alt={p.author}
                           className="w-5 h-5 rounded-full ring-1 ring-white/20"
                         />
-                        <span className="text-slate-400 text-[11px] truncate max-w-[90px]">
                         <span className={`text-[11px] truncate max-w-[90px] ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>
                           {p.author}
                         </span>
@@ -367,7 +338,6 @@ export default function ClubBento() {
                         href={p.repoUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-slate-400 hover:text-white flex items-center gap-1"
                         className={`flex items-center gap-1 transition-colors ${
                           isDarkMode ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'
                         }`}

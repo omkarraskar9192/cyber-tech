@@ -15,124 +15,19 @@
 
 /* ================= DARK THEME (OBSIDIAN / COSMIC NIGHT) ================= */
 .dark-theme {
-  background-color: #030712 !important;
-  color: #f8fafc !important;
-}
-
-.dark-theme header {
-  background-color: rgba(3, 7, 18, 0.85) !important;
-  border-color: rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.6) !important;
-}
-
-.dark-theme footer {
-  background-color: #020617 !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  color: #94a3b8 !important;
+  background-color: #030712;
+  color: #f8fafc;
 }
 
 /* ================= LIGHT THEME (WHITE / SOLAR ILLUMINATION) ================= */
 .light-theme {
-  background-color: #f8fafc !important;
-  color: #0f172a !important;
+  background-color: #f8fafc;
+  color: #0f172a;
 }
 
-.light-theme header {
-  background-color: rgba(255, 255, 255, 0.88) !important;
-  border-color: rgba(226, 232, 240, 0.95) !important;
-  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.05) !important;
-}
-
-.light-theme header nav {
-  background-color: rgba(241, 245, 249, 0.85) !important;
-  border-color: rgba(203, 213, 225, 0.8) !important;
-}
-
-.light-theme header a,
-.light-theme header span {
-  color: #0f172a !important;
-}
-
-.light-theme footer {
-  background-color: #f1f5f9 !important;
-  border-color: #e2e8f0 !important;
-  color: #475569 !important;
-}
-
-.light-theme footer h3,
-.light-theme footer h4 {
-  color: #0f172a !important;
-}
-
-.light-theme footer p,
-.light-theme footer a {
-  color: #475569 !important;
-}
-
-/* Bento Cards, Project Cards, Team Cards in Light Mode */
-.light-theme .bg-slate-900\/60,
-.light-theme .bg-slate-900\/70,
-.light-theme .bg-slate-900\/80,
-.light-theme .bg-slate-900\/90,
-.light-theme .bg-slate-900,
-.light-theme .bg-slate-950\/70,
-.light-theme .bg-slate-950\/80,
-.light-theme .bg-slate-950\/90,
-.light-theme .bg-slate-950 {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  color: #0f172a !important;
-  border-color: rgba(226, 232, 240, 0.9) !important;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.03) !important;
-}
-
-.light-theme .text-white,
-.light-theme .text-slate-100 {
-  color: #0f172a !important;
-}
-
-.light-theme .text-slate-200,
-.light-theme .text-slate-300 {
-  color: #334155 !important;
-}
-
-.light-theme .text-slate-400 {
-  color: #475569 !important;
-}
-
-.light-theme .text-slate-500 {
-  color: #64748b !important;
-}
-
-.light-theme .border-white\/10,
-.light-theme .border-white\/15,
-.light-theme .border-white\/20 {
-  border-color: rgba(226, 232, 240, 0.95) !important;
-}
-
-/* Light Terminal Theme */
-.light-theme .terminal-bg {
-  background-color: #f1f5f9 !important;
-  border-color: #cbd5e1 !important;
-}
-
-.light-theme .terminal-header {
-  background-color: #e2e8f0 !important;
-  border-color: #cbd5e1 !important;
-  color: #334155 !important;
-}
-
-/* Inputs & Form Controls */
-.light-theme input[type="text"],
-.light-theme input[type="search"],
-.light-theme textarea {
-  background-color: #ffffff !important;
-  color: #0f172a !important;
-  border-color: #cbd5e1 !important;
-}
-
-/* 3D Solar Canvas Frame in Light Mode */
+/* 3D Solar Canvas Frame in Light Mode preserves dark cosmic canvas interior */
 .light-theme .solar-canvas-frame {
-  background-color: rgba(15, 23, 42, 0.95) !important;
-  border-color: rgba(203, 213, 225, 0.8) !important;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15) !important;
+  background-color: #080d1a !important;
+  border-color: rgba(203, 213, 225, 0.9) !important;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12) !important;
 }

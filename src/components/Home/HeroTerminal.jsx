@@ -8,6 +8,7 @@ export default function HeroTerminal() {
   const terminalHistory = useSelector((state) => state.ui.terminalHistory);
   const projects = useSelector((state) => state.club.projects);
   const stats = useSelector((state) => state.club.stats);
+  const isDarkMode = useSelector((state) => state.ui.isDarkMode);
 
   const [inputVal, setInputVal] = useState('');
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0, glareX: 50, glareY: 50 });
@@ -108,7 +109,11 @@ export default function HeroTerminal() {
         transform: `perspective(1000px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
         transition: 'transform 0.15s ease-out',
       }}
-      className="relative w-full max-w-lg rounded-2xl border border-white/15 bg-slate-950/80 backdrop-blur-xl shadow-2xl overflow-hidden group"
+      className={`relative w-full max-w-lg rounded-2xl border backdrop-blur-xl overflow-hidden group transition-all duration-500 ${
+        isDarkMode
+          ? 'border-white/15 bg-slate-950/90 shadow-2xl shadow-cyan-950/30'
+          : 'border-slate-300/90 bg-[#0f172a] shadow-2xl shadow-slate-300/60 ring-1 ring-slate-200'
+      }`}
     >
       {/* Dynamic light reflection / glare effect */}
       <div
@@ -119,7 +124,7 @@ export default function HeroTerminal() {
       />
 
       {/* Terminal Title Bar */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-slate-900/60">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-slate-900/80">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-red-500/80" />
           <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
