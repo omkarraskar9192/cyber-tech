@@ -96,7 +96,7 @@ export default function Team() {
   ];
 
   return (
-    <div className={`min-h-screen py-16 px-4 sm:px-6 lg:px-8 relative overflow-x-hidden selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-500 ${
+    <div className={`flex-1 w-full py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-500 ${
       isDarkMode ? 'text-slate-100' : 'text-slate-900'
     }`}>
       {/* Background ambient lighting - Dynamic Cosmic Flares */}
@@ -132,7 +132,7 @@ export default function Team() {
           </h1>
 
           <p className={`text-base sm:text-lg max-w-2xl mx-auto leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
-            Passionate student leaders, researchers, and engineers driving the Nexus technical roadmap.
+            Passionate student leaders, researchers, and engineers driving the Cyber Tech technical roadmap.
           </p>
         </div>
 

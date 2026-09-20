@@ -55,7 +55,7 @@ export default function About() {
     },
     {
       year: '2026',
-      title: 'Nexus Collective v2.0',
+      title: 'Cyber Tech v2.0',
       desc: 'Expanded to 320+ active student contributors, 38 production repositories, and established mentorship networks with alumni at top tech firms.',
     },
     {
@@ -73,7 +73,7 @@ export default function About() {
   ];
 
   return (
-    <div className={`min-h-screen py-16 px-4 sm:px-6 lg:px-8 relative overflow-x-hidden selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-500 ${
+    <div className={`flex-1 w-full py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-500 ${
       isDarkMode ? 'text-slate-100' : 'text-slate-900'
     }`}>
       {/* Background ambient lighting - Dynamic Cosmic Flares */}
@@ -109,7 +109,7 @@ export default function About() {
           </h1>
 
           <p className={`text-base sm:text-lg leading-relaxed max-w-2xl mx-auto ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
-            Nexus Collective was founded on a simple premise: the best way to become a world-class engineer is by collaborating on ambitious, production-grade software with curious peers.
+            Cyber Tech was founded on a simple premise: the best way to become a world-class engineer is by collaborating on ambitious, production-grade software with curious peers.
           </p>
         </div>
 
@@ -237,13 +237,13 @@ export default function About() {
             Ready to Hack, Ship, and Learn with Us?
           </h3>
           <p className={`max-w-xl mx-auto text-xs sm:text-sm leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
-            Whether you are writing your first lines of Rust or tuning neural networks, there is a place for you in Nexus Collective.
+            Whether you are writing your first lines of Rust or tuning neural networks, there is a place for you in Cyber Tech.
           </p>
           <button
             onClick={() => dispatch(setJoinModalOpen(true))}
             className="px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-400 via-teal-300 to-cyan-300 text-slate-950 font-extrabold text-xs shadow-lg shadow-cyan-500/25 flex items-center gap-2 mx-auto hover:scale-105 transition-transform cursor-pointer"
           >
-            <span>Join Nexus Today</span>
+            <span>Join Cyber Tech Today</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

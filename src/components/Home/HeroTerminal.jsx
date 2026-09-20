@@ -50,7 +50,7 @@ export default function HeroTerminal() {
     if (!trimmed) return;
 
     // Log the user's entered command
-    dispatch(addTerminalCommand({ type: 'user', text: `nexus-club@core:~$ ${trimmed}` }));
+    dispatch(addTerminalCommand({ type: 'user', text: `cyber-tech@core:~$ ${trimmed}` }));
 
     const lower = trimmed.toLowerCase();
 
@@ -131,7 +131,7 @@ export default function HeroTerminal() {
           <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
           <span className="ml-2 text-xs font-mono text-slate-400 flex items-center gap-1.5">
             <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-            nexus-club@cli: ~/workspace
+            cyber-tech@cli: ~/workspace
           </span>
         </div>
 

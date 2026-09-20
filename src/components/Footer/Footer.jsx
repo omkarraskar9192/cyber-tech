@@ -7,7 +7,7 @@ export default function Footer() {
   const isDarkMode = useSelector((state) => state.ui.isDarkMode);
 
   return (
-    <footer className={`w-full border-t py-12 transition-colors duration-500 ${
+    <footer className={`w-full mt-auto border-t py-12 transition-colors duration-500 ${
       isDarkMode
         ? 'border-white/10 bg-slate-950 text-slate-400'
         : 'border-slate-200 bg-slate-50 text-slate-600'
@@ -21,7 +21,7 @@ export default function Footer() {
                 <Code2 className="w-4 h-4" />
               </div>
               <span className={`font-extrabold text-base tracking-tight ${isDarkMode ? 'text-white' : 'text-slate-950'}`}>
-                NEXUS COLLECTIVE
+                CYBER TECH
               </span>
             </div>
             <p className={`text-xs max-w-sm leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
@@ -92,7 +92,7 @@ export default function Footer() {
         <div className={`pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono ${
           isDarkMode ? 'border-white/5 text-slate-400' : 'border-slate-200 text-slate-600'
         }`}>
-          <p>&copy; {new Date().getFullYear()} Nexus Developer Collective. Open Source under MIT License.</p>
+          <p>&copy; {new Date().getFullYear()} Cyber Tech Developer Collective. Open Source under MIT License.</p>
           <p className="flex items-center gap-1 text-slate-500">
             Crafted with <Heart className="w-3 h-3 text-rose-500 fill-rose-500" /> by Club Engineers
           </p>

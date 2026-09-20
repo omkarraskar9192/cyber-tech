@@ -94,7 +94,7 @@ export default function Content() {
   });
 
   return (
-    <div className={`min-h-screen py-16 px-4 sm:px-6 lg:px-8 relative overflow-x-hidden selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-500 ${
+    <div className={`flex-1 w-full py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-500 ${
       isDarkMode ? 'text-slate-100' : 'text-slate-900'
     }`}>
       {/* Background ambient lighting - Dynamic Cosmic Flares */}

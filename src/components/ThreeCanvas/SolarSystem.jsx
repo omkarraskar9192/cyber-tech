@@ -438,10 +438,10 @@ export default function SolarSystem() {
   }, []); // Run ONCE on mount! No tearing down on slider changes!
 
   return (
-    <div className={`solar-canvas-frame relative w-full h-[520px] sm:h-[620px] lg:h-[700px] flex items-center justify-center select-none overflow-hidden rounded-3xl border transition-all duration-500 ${
+    <div className={`solar-canvas-frame relative w-full h-[460px] sm:h-[600px] lg:h-[700px] flex items-center justify-center select-none overflow-hidden rounded-3xl border transition-all duration-500 ${
       isDarkMode
         ? 'border-white/15 bg-slate-950/95 shadow-2xl'
-        : 'border-slate-300/80 bg-[#080d1a] shadow-xl shadow-slate-300/50'
+        : 'border-slate-200 bg-[#080d1a] shadow-xl shadow-slate-200/50'
     }`}>
       {/* Dynamic Cosmic Nebula Glow */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
@@ -580,14 +580,14 @@ export default function SolarSystem() {
 
       {/* ================= SPECIAL EARTH DAY / NIGHT TRANSITION CONTROLLER ================= */}
       {selectedPlanet === 'earth' && (
-        <div className={`absolute bottom-4 left-4 right-4 z-30 p-4 rounded-3xl border backdrop-blur-2xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-4 animate-in fade-in slide-in-from-bottom duration-200 transition-all ${
+        <div className={`absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 z-30 p-3 sm:p-4 rounded-2xl sm:rounded-3xl border backdrop-blur-2xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 animate-in fade-in slide-in-from-bottom duration-200 transition-all ${
           isDarkMode
             ? 'bg-slate-950/95 border-cyan-500/40 text-white'
-            : 'bg-white/95 border-amber-400/60 text-slate-950 shadow-xl shadow-amber-500/10'
+            : 'bg-white border-slate-200 text-slate-950 shadow-2xl'
         }`}>
           {/* Status Label */}
-          <div className="flex items-center gap-3">
-            <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shadow-sm ${
+          <div className="flex items-center gap-2.5 sm:gap-3 w-full md:w-auto">
+            <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0 shadow-sm ${
               isDarkMode ? 'bg-cyan-500/15 border border-cyan-500/30 text-cyan-400' : 'bg-amber-100 border border-amber-300 text-amber-600'
             }`}>
               {dayNightPhase === 'day' || dayNightPhase === 'dawn' ? (

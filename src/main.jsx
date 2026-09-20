@@ -10,14 +10,15 @@ import { Content, Team, About, Home } from './components/index.js';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/cyber-tech" element={<Layout />}>
-      <Route path="" element={<Home />} />
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="content" element={<Content />} />
       <Route path="projects" element={<Content />} />
       <Route path="team" element={<Team />} />
     </Route>
-  )
+  ),
+  { basename: import.meta.env.BASE_URL }
 );
 
 createRoot(document.getElementById('root')).render(

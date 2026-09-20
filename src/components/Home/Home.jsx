@@ -37,33 +37,21 @@ export default function Home() {
 
   // Dynamic Theme Colors based on Earth Day/Night Engine
   const getThemeStyles = () => {
-    if (dayNightPhase === 'day') {
+    if (!isDarkMode) {
       return {
-        bg: 'bg-[#f8fafc] transition-colors duration-700',
+        bg: 'bg-white transition-colors duration-500',
         textColor: 'text-slate-900',
         headingColor: 'text-slate-950',
         subtextColor: 'text-slate-700',
-        flare1: 'bg-amber-300/35 blur-[120px]',
-        flare2: 'bg-sky-400/30 blur-[130px]',
-        flare3: 'bg-amber-200/25 blur-[140px]',
+        flare1: 'bg-amber-200/25 blur-[120px]',
+        flare2: 'bg-sky-200/20 blur-[130px]',
+        flare3: 'bg-amber-100/20 blur-[140px]',
         pillColor: 'bg-amber-100/90 text-amber-900 border-amber-300 shadow-sm font-semibold',
         badge: '☀️ SOLAR DAY ILLUMINATION (WHITE LIGHT MODE)',
       };
-    } else if (dayNightPhase === 'dawn') {
-      return {
-        bg: 'bg-[#fdf8f0] transition-colors duration-700',
-        textColor: 'text-slate-900',
-        headingColor: 'text-slate-950',
-        subtextColor: 'text-slate-700',
-        flare1: 'bg-amber-500/25 blur-[130px]',
-        flare2: 'bg-rose-400/20 blur-[130px]',
-        flare3: 'bg-orange-300/20 blur-[140px]',
-        pillColor: 'bg-amber-100/90 text-amber-900 border-amber-300 shadow-sm font-semibold',
-        badge: '🌅 GOLDEN DAWN / SUNRISE (LIGHT SHIFT)',
-      };
     } else if (dayNightPhase === 'dusk') {
       return {
-        bg: 'bg-[#0d0718] transition-colors duration-700',
+        bg: 'bg-[#0d0718] transition-colors duration-500',
         textColor: 'text-slate-100',
         headingColor: 'text-white',
         subtextColor: 'text-slate-300',
@@ -76,7 +64,7 @@ export default function Home() {
     } else {
       // Cosmic Midnight Dark Mode
       return {
-        bg: 'bg-[#030712] transition-colors duration-700',
+        bg: 'bg-[#030712] transition-colors duration-500',
         textColor: 'text-slate-100',
         headingColor: 'text-white',
         subtextColor: 'text-slate-300',
@@ -92,7 +80,7 @@ export default function Home() {
   const theme = getThemeStyles();
 
   return (
-    <div className={`min-h-screen ${theme.bg} ${theme.textColor} overflow-x-hidden relative selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-700`}>
+    <div className={`w-full flex-1 flex flex-col ${theme.bg} ${theme.textColor} overflow-hidden relative selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-500`}>
       {/* Background ambient lighting flares - Dynamic with Celestial Time */}
       <div className={`pointer-events-none absolute top-[-50px] left-1/4 -translate-x-1/2 w-[650px] h-[650px] rounded-full -z-10 animate-pulse transition-all duration-700 ${theme.flare1}`} />
       <div className={`pointer-events-none absolute top-20 right-0 w-[600px] h-[600px] rounded-full -z-10 transition-all duration-700 ${theme.flare2}`} />
@@ -445,7 +433,7 @@ export default function Home() {
           <p className={`max-w-xl mx-auto mt-4 text-sm sm:text-base relative z-10 leading-relaxed transition-colors duration-500 ${
             isDarkMode ? 'text-slate-300' : 'text-slate-600'
           }`}>
-            Join Nexus Collective today. Gain access to private hackathons, mentorship from alumni at top tech firms, and high-performance server clusters.
+            Join Cyber Tech today. Gain access to private hackathons, mentorship from alumni at top tech firms, and high-performance server clusters.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 relative z-10">

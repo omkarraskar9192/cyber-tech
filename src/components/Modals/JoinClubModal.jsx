@@ -61,7 +61,7 @@ export default function JoinClubModal() {
               MEMBERSHIP REGISTRATION
             </div>
             <h3 className={`text-2xl font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-slate-950'}`}>
-              Join the Nexus Developer Club
+              Join Cyber Tech
             </h3>
             <p className={`text-sm mt-1 mb-6 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
               Collaborate on real-world systems, ship open source, and hack alongside top engineers.

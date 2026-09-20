@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialTerminalHistory = [
-  { type: 'system', text: 'Initializing Nexus DevClub Core v2.4.0...' },
+  { type: 'system', text: 'Initializing Cyber Tech Core v2.4.0...' },
   { type: 'system', text: 'WebGL 3D Engine: Active (60 FPS)' },
   { type: 'info', text: 'Type "help" to see available commands or click quick chips below.' },
 ];
@@ -26,17 +26,41 @@ export const getPhaseFromSolarTime = (t) => {
   }
 };
 
-const initialSolarTime = getRealWorldSolarTime();
-const initialPhaseInfo = getPhaseFromSolarTime(initialSolarTime);
+const getSavedThemePreference = () => {
+  if (typeof window === 'undefined') return null;
+  try {
+    return localStorage.getItem('cybertech_theme');
+  } catch {
+    return null;
+  }
+};
+
+const savedTheme = getSavedThemePreference();
+const realWorldSolarTime = getRealWorldSolarTime();
+const calculatedPhase = getPhaseFromSolarTime(realWorldSolarTime);
+
+let initialSolarTime = realWorldSolarTime;
+let initialPhase = calculatedPhase.phase;
+let initialIsDarkMode = calculatedPhase.isDarkMode;
+
+if (savedTheme === 'light') {
+  initialIsDarkMode = false;
+  initialSolarTime = 0.5;
+  initialPhase = 'day';
+} else if (savedTheme === 'dark') {
+  initialIsDarkMode = true;
+  initialSolarTime = 0.0;
+  initialPhase = 'night';
+}
 
 const initialState = {
   isJoinModalOpen: false,
   active3DGeometry: 'polyhedron', // 'polyhedron' | 'torus' | 'octahedron'
   active3DScene: 'solar', // 'solar' | 'cyber'
   selectedPlanet: 'all', // 'all' | 'sun' | 'mercury' | 'venus' | 'earth' | 'mars' | 'jupiter' | 'saturn' | 'uranus' | 'neptune'
-  solarTime: initialSolarTime, // Auto-initialized from user's current clock!
-  dayNightPhase: initialPhaseInfo.phase, // 'night' | 'dawn' | 'day' | 'dusk'
-  isDarkMode: initialPhaseInfo.isDarkMode, // False = Light mode (white), True = Dark mode
+  solarTime: initialSolarTime,
+  dayNightPhase: initialPhase, // 'night' | 'dawn' | 'day' | 'dusk'
+  isDarkMode: initialIsDarkMode, // False = Light mode (pure white), True = Dark mode
   isOrbitPlaying: true,
   terminalHistory: initialTerminalHistory,
   toastMessage: null,
@@ -64,6 +88,11 @@ export const uiSlice = createSlice({
       const { phase, isDarkMode } = getPhaseFromSolarTime(t);
       state.dayNightPhase = phase;
       state.isDarkMode = isDarkMode;
+      try {
+        localStorage.setItem('cybertech_theme', isDarkMode ? 'dark' : 'light');
+      } catch {
+        // ignore
+      }
     },
     toggleDarkMode: (state) => {
       state.isDarkMode = !state.isDarkMode;
@@ -76,6 +105,11 @@ export const uiSlice = createSlice({
         state.solarTime = 0.5;
         state.dayNightPhase = 'day';
       }
+      try {
+        localStorage.setItem('cybertech_theme', state.isDarkMode ? 'dark' : 'light');
+      } catch {
+        // ignore
+      }
     },
     syncToRealTime: (state) => {
       const t = getRealWorldSolarTime();
@@ -83,6 +117,11 @@ export const uiSlice = createSlice({
       const { phase, isDarkMode } = getPhaseFromSolarTime(t);
       state.dayNightPhase = phase;
       state.isDarkMode = isDarkMode;
+      try {
+        localStorage.setItem('cybertech_theme', isDarkMode ? 'dark' : 'light');
+      } catch {
+        // ignore
+      }
     },
     setIsOrbitPlaying: (state, action) => {
       state.isOrbitPlaying = action.payload;

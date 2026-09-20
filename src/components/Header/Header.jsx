@@ -5,18 +5,18 @@ import { setJoinModalOpen, toggleDarkMode } from '../../store/slices/uiSlice';
 import { Code2, Menu, X, ArrowRight, Sun, Moon } from 'lucide-react';
 import { GithubIcon } from '../common/Icons';
 
+const navItems = [
+  { name: 'Home', path: '/', end: true },
+  { name: 'Projects', path: '/content' },
+  { name: 'Team', path: '/team' },
+  { name: 'About', path: '/about' },
+];
+
 export default function Header() {
   const dispatch = useDispatch();
   const isDarkMode = useSelector((state) => state.ui.isDarkMode);
   const solarTime = useSelector((state) => state.ui.solarTime);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Projects', path: '/content' },
-    { name: 'Team', path: '/team' },
-    { name: 'About', path: '/about' },
-  ];
 
   return (
     <header className={`sticky top-0 z-40 w-full border-b backdrop-blur-xl transition-all duration-500 ${
@@ -39,7 +39,7 @@ export default function Header() {
               <span className={`font-extrabold text-base tracking-tight flex items-center gap-1.5 ${
                 isDarkMode ? 'text-white' : 'text-slate-950'
               }`}>
-                NEXUS <span className="text-cyan-400 font-mono text-xs font-semibold px-1.5 py-0.5 rounded bg-cyan-950 border border-cyan-500/30">DEV</span>
+                CYBER <span className="text-cyan-400 font-mono text-xs font-semibold px-1.5 py-0.5 rounded bg-cyan-950 border border-cyan-500/30">TECH</span>
               </span>
               <p className={`text-[10px] font-mono hidden sm:block ${
                 isDarkMode ? 'text-slate-400' : 'text-slate-500'
@@ -59,6 +59,7 @@ export default function Header() {
               <NavLink
                 key={item.name}
                 to={item.path}
+                end={item.end}
                 className={({ isActive }) =>
                   `px-4 py-1.5 text-xs font-medium rounded-full transition-all ${
                     isActive
@@ -126,16 +127,20 @@ export default function Header() {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={() => dispatch(toggleDarkMode())}
-              className={`p-2 rounded-full border text-xs cursor-pointer ${
-                isDarkMode ? 'border-white/20 text-white' : 'border-slate-300 text-slate-900'
+              className={`p-2 rounded-full border text-xs cursor-pointer transition-all ${
+                isDarkMode
+                  ? 'border-amber-400/40 bg-slate-900/90 text-amber-400 hover:bg-slate-800'
+                  : 'border-amber-400/70 bg-amber-100/90 text-amber-900 hover:bg-amber-200 shadow-sm'
               }`}
-              title="Toggle Day/Night"
+              title={isDarkMode ? 'Switch to Light Mode (White)' : 'Switch to Dark Mode'}
+              aria-label="Toggle Light and Dark Mode"
             >
-              {isDarkMode ? <Moon className="w-4 h-4 text-cyan-400" /> : <Sun className="w-4 h-4 text-amber-500" />}
+              {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-cyan-700" />}
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`p-2 cursor-pointer ${isDarkMode ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-slate-950'}`}
+              aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -145,16 +150,54 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className={`md:hidden border-b backdrop-blur-2xl px-4 pt-2 pb-6 space-y-3 transition-colors ${
+        <div className={`md:hidden border-b px-4 pt-3 pb-6 space-y-4 transition-colors ${
           isDarkMode
-            ? 'border-white/10 bg-slate-950/95 text-white'
-            : 'border-slate-200 bg-white/95 text-slate-900 shadow-xl'
+            ? 'border-white/10 bg-slate-950 text-white'
+            : 'border-slate-200 bg-white text-slate-900 shadow-2xl'
         }`}>
+          {/* Mobile Theme Switcher Bar */}
+          <div className={`p-3 rounded-2xl border flex items-center justify-between transition-colors ${
+            isDarkMode ? 'bg-white/5 border-white/10' : 'bg-slate-50 border-slate-200'
+          }`}>
+            <span className="text-xs font-mono font-semibold">
+              Mode: {isDarkMode ? 'Cosmic Dark' : 'Pure White Light'}
+            </span>
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={() => {
+                  if (isDarkMode) dispatch(toggleDarkMode());
+                }}
+                className={`px-3 py-1 rounded-xl text-xs font-mono font-bold flex items-center gap-1 border transition-all cursor-pointer ${
+                  !isDarkMode
+                    ? 'bg-amber-400 text-slate-950 border-amber-500 shadow-sm font-extrabold'
+                    : 'bg-white/5 text-slate-400 border-white/10 hover:bg-white/10'
+                }`}
+              >
+                <Sun className="w-3.5 h-3.5 text-amber-500" />
+                <span>Light</span>
+              </button>
+              <button
+                onClick={() => {
+                  if (!isDarkMode) dispatch(toggleDarkMode());
+                }}
+                className={`px-3 py-1 rounded-xl text-xs font-mono font-bold flex items-center gap-1 border transition-all cursor-pointer ${
+                  isDarkMode
+                    ? 'bg-cyan-500/20 text-cyan-300 border-cyan-400/50 shadow-sm font-extrabold'
+                    : 'bg-slate-200 text-slate-600 border-slate-300 hover:bg-slate-300'
+                }`}
+              >
+                <Moon className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Dark</span>
+              </button>
+            </div>
+          </div>
+
           <div className="flex flex-col space-y-1">
             {navItems.map((item) => (
               <NavLink
                 key={item.name}
                 to={item.path}
+                end={item.end}
                 onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
                   `px-3 py-2 text-sm font-medium rounded-xl ${
